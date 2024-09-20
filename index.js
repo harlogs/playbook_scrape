@@ -41,7 +41,7 @@ async function fetchJsonData() {
     });
 
     // Load the webpage
-    await page.goto('https://www.playbook.com/s/will-meet/wSCRJpv1AQVCEkwCeC4LWGAm?assetToken=3r7BbmWjnrbcZQCs7dDJFcyr', { waitUntil: 'networkidle2' });
+    await page.goto('https://www.playbook.com/s/will-meet/wSCRJpv1AQVCEkwCeC4LWGAm?assetToken=3r7BbmWjnrbcZQCs7dDJFcyr', { waitUntil: 'networkidle2', timeout: 180000 });
 
     // Wait for the SVG with `data-icon="download"` to appear
     await page.waitForSelector('svg[data-icon="download"]');
@@ -88,4 +88,5 @@ app.use(express.static('public'));
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
-});
+}).setTimeout(600000);;
+
